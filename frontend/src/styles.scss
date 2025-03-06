@@ -18,6 +18,19 @@ body{
 hr{
     margin-bottom: 2vh;
 }
+select, input{
+    display: block;
+    max-width: 200px;
+    width: 100%;
+}
+input[type="submit"]{
+    display: block;
+    cursor: pointer;
+    padding: 1rem;
+    width: 100%;
+    max-width: 110%;
+    font-size: 1.5rem;
+}
 .form-section{
     display: flex;
     flex-direction: column;
@@ -31,4 +44,12 @@ hr{
 }
 label{
     text-transform: capitalize;
+}
+.around{
+    display: flex;
+    justify-content: space-around;
+}
+input[type="radio"]{
+    margin-right: 1rem;
+    background-color: red;
 }
