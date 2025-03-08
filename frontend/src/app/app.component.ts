@@ -17,4 +17,5 @@ import { FooterComponent } from './footer/footer.component';
 })
 export class AppComponent {
   title = 'LoreFriendly';
+  readonly rootUrl = 'http://localhost:4200/characters';
 }

@@ -5,6 +5,8 @@ import { DialogueComponent } from './pages/dialogue/dialogue.component';
 import { QuestsComponent } from './pages/quests/quests.component';
 import { EventsComponent } from './pages/events/events.component';
 import { ChaptersComponent } from './pages/chapters/chapters.component';
+import { MemoriesComponent } from './pages/memories/memories.component';
+import { PlacesComponent } from './pages/places/places.component';
 
 export const routes: Routes = [
     { path: 'home', component: HomeComponent },
@@ -12,5 +14,7 @@ export const routes: Routes = [
     { path: 'dialogue', component: DialogueComponent },
     { path: 'quests', component: QuestsComponent },
     { path: 'events', component: EventsComponent },
-    { path: 'chapters', component: ChaptersComponent }
+    { path: 'chapters', component: ChaptersComponent },
+    { path: 'memories', component: MemoriesComponent },
+    { path: 'places', component: PlacesComponent },
 ];
