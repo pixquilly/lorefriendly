@@ -7,6 +7,11 @@ const pool = mysql.createConnection({
     database: 'lorefriendly'
 });
 
-const result = pool.query('SELECT * FROM characters');
-console.log(result[0]);
+pool.query('SELECT * FROM characters;', (error, results) => {
+    if (error) {
+        console.error(error);
+        return;
+    }
+    console.log(results);
+});
 
