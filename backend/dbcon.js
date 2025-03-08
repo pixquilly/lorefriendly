@@ -7,6 +7,6 @@ const pool = mysql.createConnection({
     database: 'lorefriendly'
 });
 
-const result = pool.query('SELECT * FROM users');
+const result = pool.query('SELECT * FROM characters');
 console.log(result[0]);
 
