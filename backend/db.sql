@@ -10,7 +10,7 @@ CREATE TABLE places (
 CREATE TABLE characters (
     id SERIAL PRIMARY KEY,
     fname VARCHAR(255) NOT NULL,
-    manme VARCHAR(255),
+    mname VARCHAR(255),
     lname VARCHAR(255),
     nicknames VARCHAR(255),
     titles VARCHAR(255),
@@ -20,3 +20,4 @@ CREATE TABLE characters (
     bloodline VARCHAR(255),
     place_of_birth VARCHAR(255)
 );
+
