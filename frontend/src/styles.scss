@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+@media screen and (max-width: 600px) {
+    header>nav{
+        
+    }
+}
+hr{
+    margin-bottom: 2vh;
+}
+select, input{
+    display: block;
+    max-width: 200px;
+    width: 100%;
+}
+input[type="submit"]{
+    display: block;
+    cursor: pointer;
+    padding: 1rem;
+    width: 100%;
+    max-width: 110%;
+    font-size: 1.5rem;
+}
+.form-section{
+    display: flex;
+    flex-direction: column;
+    margin: 5rem;
+}
+.input-group{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid rgb(151, 151, 151);
+}
+label{
+    text-transform: capitalize;
+}
+.around{
+    display: flex;
+    justify-content: space-around;
+}
+input[type="radio"]{
+    margin-right: 1rem;
+    background-color: red;
+}
