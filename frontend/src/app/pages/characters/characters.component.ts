@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { catchError, map, throwError } from 'rxjs';
 
@@ -11,9 +11,16 @@ import { catchError, map, throwError } from 'rxjs';
   imports: [CommonModule, FormsModule]
 })
 export class CharactersComponent {
+  constructor(private http: HttpClient) {
+    //constructor
+    this.get_characters();
+    this.get_traits();
+
+  }
+  baseUrl: string = "http://localhost:3000";
   data: any;
   fname: string = '';
-  mname: string = ''; 
+  mname: string = '';
   lname: string = '';
   nicknames: Array<string> = [];
   titles: Array<string> = [];
@@ -23,19 +30,21 @@ export class CharactersComponent {
   bloodline: string = '';
   birthplace: string = '';
   // Traits
-  list_of_traits: Array<Array<string>> = [
-    ["COMPOSED", "HOTHEAD"],
-    ["SENSITIVE", "COLD"],
-    ["TALKATIVE", "QUIET"],
-    ["HONORABLE", "UNPREDICTABLE"],
-    ["REALISTIC", "HOPEFUL"],
-    ["HUMOROUS", "SERIOUS"],
-    ["OPTIMISTIC", "PESSIMISTIC"],
-    ["KIND", "CRUEL"],
-    ["GENEROUS", "SELFISH"],
-    ["EMPATHETIC", "APATHETIC"]
-  ];
-  traits: Array<Array<string>> = [];
+  list_of_traits: any = '';
+  // list_of_traits: Array<Array<string>> = [
+  //   ["COMPOSED", "HOTHEAD"],
+  //   ["SENSITIVE", "COLD"],
+  //   ["TALKATIVE", "QUIET"],
+  //   ["HONORABLE", "UNPREDICTABLE"],
+  //   ["REALISTIC", "HOPEFUL"],
+  //   ["HUMOROUS", "SERIOUS"],
+  //   ["OPTIMISTIC", "PESSIMISTIC"],
+  //   ["KIND", "CRUEL"],
+  //   ["GENEROUS", "SELFISH"],
+  //   ["EMPATHETIC", "APATHETIC"]
+  // ];
+  traits: string = '';
+  characters: any = '';
   composed: string = '';
   sensitive: string = '';
   talkative: string = '';
@@ -48,15 +57,36 @@ export class CharactersComponent {
   empathetic: string = '';
 
   // Stats (Max)
-  hp: number = 0;
-  sp: number = 0;
-  mp: number = 0;
-  speed: number = 0;
-  hunger: number = 0;
-  thirst: number = 0;
-  energy: number = 0;
-  constructor(private http: HttpClient) {}
-  sendFormData(form: any) {
+  hp: number = 100;
+  sp: number = 100;
+  mp: number = 100;
+  speed: number = 10;
+  hunger: number = 100;
+  thirst: number = 100;
+  energy: number = 100;
+
+  get_characters(){
+    this.http.get(this.baseUrl + '/characters/all').subscribe({
+    next: (result)=>{
+      this.characters = result;
+    },
+    error:(error)=>{
+      console.warn("error:" + error);
+    }
+    });
+  }
+  get_traits(){
+    this.http.get(this.baseUrl + '/traits/all').subscribe({
+    next: (result)=>{
+      this.list_of_traits = result;
+    },
+    error:(error)=>{
+      console.warn("error:" + error);
+    }
+    });
+  }
+  
+  sendFormData() {
     let body = {
       fname: this.fname,
       mname: this.mname,
@@ -70,7 +100,7 @@ export class CharactersComponent {
       place_of_birth: this.birthplace,
       traits: this.traits
     };
-    this.http.post('http://localhost:3000/characters/insert', body).subscribe({
+    this.http.post(this.baseUrl + '/characters/insert', body).subscribe({
       next: (response) => {
         this.data = response; // Store the response
         console.log('Post successful:', response);

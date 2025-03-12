@@ -1,3 +1,5 @@
+<main>
+
 <h1 class="title">Characters</h1>
 <p>Create a character and save it for use with other software.</p>
 <hr>
@@ -13,11 +15,11 @@
             <input type="text" id="mname" [(ngModel)]="mname" name="mname">
         </div>
         <div class="input-group">
-            <label for="lname">Last Name:</label>
+            <label for="lname">last name:</label>
             <input type="text" id="lname" [(ngModel)]="lname" name="lname">
         </div>
         <div class="input-group">
-            <label for="nickname">Nickname:</label>
+            <label for="nickname">nickname:</label>
             <input type="text" id="nickname" [(ngModel)]="nicknames" name="nickname">
         </div>
         <div class="input-group">
@@ -25,7 +27,7 @@
             <input type="text" id="title" [(ngModel)]="titles" name="title">
         </div>
         <div class="input-group">
-            <label for="age">Age:</label>
+            <label for="age">age:</label>
             <input type="text" id="age" [(ngModel)]="age" name="age">
         </div>
         <div class="input-group">
@@ -50,15 +52,15 @@
     </div>
     <div class="form-section">
         <h3>Traits</h3>
-        <div *ngFor="let pair of list_of_traits; let i = index" class="input-group around">
-            <div *ngFor="let trait of pair;" class="input-group">
-                <input type="radio" [name]="pair" [value]="trait" [id]="trait">
-                <label [for]="pair">{{ trait }}</label>
+        <div *ngFor="let trait of list_of_traits; let i = index" class="input-group around">
+            <div class="input-group">
+                <input type="radio" [name]="trait.name" [value]="trait.name" [id]="trait.name">
+                <label [for]="trait.name">{{ trait.name }}</label>
             </div>
         </div>
     </div>
     <div class="form-section">
-        <h3>Stats (Max)</h3>
+        <h3>Unit Stats (Max)</h3>
         <div class="input-group">
             <label for="hp">Health:</label>
             <input type="text" id="hp" [(ngModel)]="hp" name="hp">
@@ -88,9 +90,11 @@
             <input type="text" id="energy" [(ngModel)]="energy" name="energy">
         </div>
     </div>
-    <div *ngIf="data">
-        <h3>Response:</h3>
-        <pre>{{ data | json }}</pre>
-    </div>
 </form>
-<button (click)="sendFormData(this)" value="Create Character">Create Character</button>
+<button class="btn txt-lrg" (click)="sendFormData()" value="Create Character">Create Character</button>
+<div >
+    <ul *ngFor="let character of characters;">
+        <li>{{ character.fname }}</li>
+    </ul>
+</div>
+</main>

@@ -20,4 +20,18 @@ header{
         margin-left: 1rem;
         margin-right: 1rem;
     }
+    .burger{
+      display: none;
+      max-width: 20%;
+      border: none;
+      background-color: inherit;
+    }
+    @media screen and (max-width: 600px) {
+      nav{
+        display: none;
+      }
+      .burger{
+        display: inline;
+      }
+    }
 }

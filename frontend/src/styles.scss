@@ -10,9 +10,10 @@ body{
     flex-direction: column;
     justify-content: space-between;
 }
-@media screen and (max-width: 600px) {
-    header>nav{
-        
+@media screen and (min-width: 800px) {
+    main{
+        margin-left: 20%;
+        margin-right: 20%;
     }
 }
 hr{
@@ -52,4 +53,18 @@ label{
 input[type="radio"]{
     margin-right: 1rem;
     background-color: red;
+}
+.btn{
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+.txt-md{
+  font-size: 1.5rem;
+}
+.txt-lrg{
+  font-size: 2rem;
+}
+.option{
+  cursor: pointer;
 }

@@ -10,10 +10,6 @@ app.use(express.static('public'));
 import router from './routes/router.js';
 app.use('/', router);
 
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
