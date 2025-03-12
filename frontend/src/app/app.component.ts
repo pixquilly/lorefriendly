@@ -21,5 +21,5 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'LoreFriendly';
-  readonly rootUrl = 'http://localhost:4200/characters';
+  readonly rootUrl = 'http://localhost:3000';
 }
