@@ -1,19 +1,19 @@
 CREATE TABLE races (
-    id SERIAL PRIMARY KEY AUTO INCREMENT,
+    id SERIAL PRIMARY KEY AUTO_INCREMENT,
 );
 CREATE TABLE bloodlines (
-    id SERIAL PRIMARY KEY AUTO INCREMENT,
+    id SERIAL PRIMARY KEY AUTO_INCREMENT,
 ); 
 CREATE TABLE places (
-    id SERIAL PRIMARY KEY AUTO INCREMENT,
+    id SERIAL PRIMARY KEY AUTO_INCREMENT,
 );
 CREATE TABLE characters (
-    id BIGINT UNSIGNED PRIMARY KEY AUTO INCREMENT,  -- Change to BIGINT UNSIGNED to match
+    id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     fname VARCHAR(255) NOT NULL,
     mname VARCHAR(255),
     lname VARCHAR(255),
-    nicknames VARCHAR(255),
-    titles VARCHAR(255),
+    nicknames JSON,
+    titles JSON,
     age VARCHAR(255),
     gender VARCHAR(50) NOT NULL,
     race VARCHAR(255),
@@ -21,12 +21,12 @@ CREATE TABLE characters (
     place_of_birth VARCHAR(255)
 );
 CREATE TABLE traits (
-    id BIGINT UNSIGNED PRIMARY KEY AUTO INCREMENT,  -- Change to BIGINT UNSIGNED to match
+    id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     description TEXT
 );
 CREATE TABLE character_traits (
-    character_id BIGINT UNSIGNED AUTO INCREMENT,
+    character_id BIGINT UNSIGNED AUTO_INCREMENT,
     trait_id BIGINT UNSIGNED,
     PRIMARY KEY (character_id, trait_id),
     CONSTRAINT fk_character_id
@@ -41,8 +41,8 @@ CREATE TABLE character_traits (
         ON DELETE CASCADE
 );
 CREATE TABLE units (
-    id SERIAL PRIMARY KEY AUTO INCREMENT,
-    character_id BIGINT UNSIGNED,  -- Use BIGINT UNSIGNED for consistency
+    id SERIAL PRIMARY KEY AUTO_INCREMENT,
+    character_id BIGINT UNSIGNED,
     max_hp INT,
     max_sp INT,
     max_mp INT,

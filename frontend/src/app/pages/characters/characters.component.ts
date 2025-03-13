@@ -30,7 +30,7 @@ export class CharactersComponent {
   bloodline: string = '';
   birthplace: string = '';
   // Traits
-  list_of_traits: any = '';
+  list_of_traits: any = null;
   // list_of_traits: Array<Array<string>> = [
   //   ["COMPOSED", "HOTHEAD"],
   //   ["SENSITIVE", "COLD"],
@@ -43,27 +43,27 @@ export class CharactersComponent {
   //   ["GENEROUS", "SELFISH"],
   //   ["EMPATHETIC", "APATHETIC"]
   // ];
-  traits: string = '';
+  traits: Array<String> = [];
   characters: any = '';
-  composed: string = '';
-  sensitive: string = '';
-  talkative: string = '';
-  honorable: string = '';
-  realistic: string = '';
-  humorous: string = '';
-  optimistic: string = '';
-  kind: string = '';
-  generous: string = '';
-  empathetic: string = '';
+  composed: String = '';
+  sensitive: String = '';
+  talkative: String = '';
+  honorable: String = '';
+  realistic: String = '';
+  humorous: String = '';
+  optimistic: String = '';
+  kind: String = '';
+  generous: String = '';
+  empathetic: String = '';
 
   // Stats (Max)
-  hp: number = 100;
-  sp: number = 100;
-  mp: number = 100;
-  speed: number = 10;
-  hunger: number = 100;
-  thirst: number = 100;
-  energy: number = 100;
+  hp: Number = 100;
+  sp: Number = 100;
+  mp: Number = 100;
+  speed: Number = 10;
+  hunger: Number = 100;
+  thirst: Number = 100;
+  energy: Number = 100;
 
   get_characters(){
     this.http.get(this.baseUrl + '/characters/all').subscribe({

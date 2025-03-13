@@ -3,7 +3,11 @@ header{
     color: white;
     display: flex;
     justify-content: space-between;
-
+    align-items:normal;
+    .title{
+      font-size: 200%;
+    }
+    min-height: 50px;
     nav>ul{
         display: flex;
         justify-content: space-between;
@@ -25,13 +29,28 @@ header{
       max-width: 20%;
       border: none;
       background-color: inherit;
+      color: white;
     }
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 1000px) {
       nav{
         display: none;
       }
       .burger{
-        display: inline;
+        display: flex;
+        flex-direction: column;
+        max-width: 60px;
+        align-items:normal;
+        margin: 10px 0 10px 0;
       }
+      .burger>span{
+        border-radius: 10%;
+        border-bottom: 3px solid white;
+        min-height: 10px;
+        margin: 0 15px 0 15px;
+      }
+    }
+    .active{
+      transition: ease-in;
+      background-color: red;
     }
 }
