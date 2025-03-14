@@ -1,5 +1,7 @@
 import express from 'express';
 import dbcon from '../dbcon.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const characters = express.Router();
 
@@ -83,9 +85,9 @@ characters.get('/get/property', (req, res) => {
     });
 });
 characters.post('/insert', (req, res) => {
-    const { fname, mname, lname, nicknames, titles, age, gender, race, bloodline, place_of_birth } = req.body;
+    const { fname, mname, lname, nicknames, titles, age, gender, race, bloodline, place_of_birth, traits} = req.body;
     const query = "INSERT INTO lorefriendly.`characters` (id, fname, mname, lname, nicknames, titles, age, gender, race, bloodline, place_of_birth) VALUES (0, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    const values = [fname, mname, lname, nicknames, titles, age, gender, race, bloodline, place_of_birth];
+    const values = [fname, mname, lname, JSON.stringify(nicknames), JSON.stringify(titles), age, gender, race, bloodline, place_of_birth];
 
     dbcon.query(query, values, (error, results) => {
         if (error) {
@@ -94,6 +96,12 @@ characters.post('/insert', (req, res) => {
         }
         return res.status(201).json(results);
     });
+    fetch('http://localhost:3000/traits/all')
+    .then((response)=>response.json())
+    .then((data)=>{
+        console.log("result", data);
+    });
+
 });
 
 characters.put('/update/:id', (req, res) => {
