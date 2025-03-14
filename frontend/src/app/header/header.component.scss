@@ -31,7 +31,7 @@ header{
       background-color: inherit;
       color: white;
     }
-    @media screen and (max-width: 1000px) {
+    @media screen and (max-width: 1152px) {
       nav{
         display: none;
       }
@@ -51,6 +51,6 @@ header{
     }
     .active{
       transition: ease-in;
-      background-color: red;
+      margin:auto
     }
 }
