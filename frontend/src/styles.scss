@@ -32,6 +32,21 @@ input[type="submit"]{
     max-width: 110%;
     font-size: 1.5rem;
 }
+input[type="radio"], label{
+    cursor: pointer;
+}
+#message{
+    display: none;
+    width: 100%;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
 .form-section{
     display: flex;
     flex-direction: column;
@@ -42,6 +57,30 @@ input[type="submit"]{
     flex-direction: row;
     justify-content: space-between;
     border: 1px solid rgb(151, 151, 151);
+}
+.error{
+    background-color: rgba(255, 0, 0, 0.527);
+    color: rgb(138, 4, 4);
+    border: 1px solid red;
+    padding: 15px;
+}
+.info{
+    background-color: rgba(0, 255, 0, 0.523);
+    color: rgb(5, 149, 5);
+    border: 1px solid lime;
+    padding: 15px;
+}
+.warning{
+    background-color: rgba(255, 0, 0, 0.527);
+    color: rgb(255, 0, 0);
+    border: 1px solid red;
+    padding: 15px;
+}
+.btn-close{
+    cursor: pointer;
+    right: 0;
+    left: 100%;
+    margin-left: auto;
 }
 label{
     text-transform: capitalize;

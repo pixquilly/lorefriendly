@@ -18,6 +18,8 @@ export class CharactersComponent {
 
   }
   baseUrl: string = "http://localhost:3000";
+  message_content: String = '';
+  submitting: boolean = false;
   data: any;
   fname: string = '';
   mname: string = '';
@@ -43,7 +45,7 @@ export class CharactersComponent {
   //   ["GENEROUS", "SELFISH"],
   //   ["EMPATHETIC", "APATHETIC"]
   // ];
-  traits: Array<String> = [];
+  traits: string[] = [];
   characters: any = '';
   composed: String = '';
   sensitive: String = '';
@@ -85,8 +87,16 @@ export class CharactersComponent {
     }
     });
   }
+  get_chosen_traits(event: Event){
+    let elm = event.target as HTMLInputElement;
+    elm.checked && (!this.traits.includes(elm.value)) ? this.traits.push(elm.value) : this.traits = this.traits.filter(trait => trait !== elm.value);
+  }
   
   sendFormData() {
+    if(this.submitting) {return};
+    this.submitting = true; 
+
+    let message: Array<string> = [];
     let body = {
       fname: this.fname,
       mname: this.mname,
@@ -104,12 +114,28 @@ export class CharactersComponent {
       next: (response) => {
         this.data = response; // Store the response
         console.log('Post successful:', response);
-
+        this.populate_message('character saved.', 'info');
       },
       error: (error) => {
         console.error('Error:', error);
+        this.populate_message('something wrong happened.', 'error');
+        this.submitting = false; // Re-enable button
+      },
+      complete: () => {
+        this.submitting = false; // Re-enable button
       }
     });
+  }
+  populate_message(message: string, _class: string){
+    let elm = document.querySelector('#message') as HTMLElement;
+    this.message_content = message;
+    elm.classList.add(_class);
+    elm.style.display = 'flex';
+  }
+  hide_parent(event: Event){
+    let elm = event.target as HTMLElement;
+    let parent = elm.parentNode as HTMLElement;
+    parent.style.display = 'none';
   }
 
 }

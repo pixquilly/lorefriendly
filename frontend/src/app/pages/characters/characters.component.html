@@ -50,12 +50,16 @@
             <input type="text" id="birthplace" [(ngModel)]="birthplace" name="birthplace">
         </div>
     </div>
+    <!--TRAITS-->
     <div class="form-section">
         <h3>Traits</h3>
+        <p>traits: {{ traits | json}}</p>
         <div *ngFor="let trait of list_of_traits; let i = index" class="input-group around">
             <div class="input-group">
-                <input type="radio" [name]="trait.name" [value]="trait.name" [id]="trait.name">
-                <label [for]="trait.name">{{ trait.name }}</label>
+                <label class="row" [for]="trait.name">
+                    <input (click)="get_chosen_traits($event);" type="checkbox" class="trait-checkbox" [name]="trait.name" [value]="trait.name" [id]="trait.name">
+                    {{ trait.name }}
+                </label>
             </div>
         </div>
     </div>
@@ -91,8 +95,9 @@
         </div>
     </div>
 </form>
+<p id="message" class="row"><span>{{ message_content }}</span><span class="btn-close" (click)="hide_parent($event);">X</span></p>
 <button class="btn txt-lrg" (click)="sendFormData()" value="Create Character">Create Character</button>
-<div >
+<div>
     <ul *ngFor="let character of characters;">
         <li>{{ character.fname }}</li>
     </ul>
